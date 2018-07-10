@@ -38,34 +38,34 @@ void setup() {
 
   xTaskCreate(
     TaskMain
-    ,  (const portCHAR *)"TaskMain"  // A name just for humans
-    ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
+    ,  (const portCHAR *)"TaskMain"  
+    ,  128  
     ,  NULL
-    ,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
+    ,  2  
     ,  NULL );
 
   xTaskCreate(
     TaskJanelas
-    ,  (const portCHAR *)"TaskJanelas"  // A name just for humans
-    ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
+    ,  (const portCHAR *)"TaskJanelas"  
+    ,  128 
     ,  NULL
-    ,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
+    ,  2  
     ,  NULL );
 
   xTaskCreate(
     TaskControle
-    ,  (const portCHAR *)"TaskControle"  // A name just for humans
-    ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
+    ,  (const portCHAR *)"TaskControle"  
+    ,  128  
     ,  NULL
-    ,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
+    ,  2  
     ,  NULL );
 
    xTaskCreate(
     TaskNivelAgua
-    ,  (const portCHAR *)"TaskNivelAgua"  // A name just for humans
-    ,  128  // This stack size can be checked & adjusted by reading the Stack Highwater
+    ,  (const portCHAR *)"TaskNivelAgua"  
+    ,  128  
     ,  NULL
-    ,  2  // Priority, with 3 (configMAX_PRIORITIES - 1) being the highest, and 0 being the lowest.
+    ,  2  
     ,  NULL );
 
   Serial.println("Programa Inicializado..");
@@ -149,7 +149,7 @@ void TaskControle( void *pvParameters __attribute__((unused)) ){
     if (irrecv.decode(&results)) {
       //Serial.println(results.value, DEC);
       xSemaphoreGive(xSemaforoMain);
-      irrecv.resume(); // Receive the next value
+      irrecv.resume(); 
     }
     vTaskDelay(20 / portTICK_PERIOD_MS );
   }
